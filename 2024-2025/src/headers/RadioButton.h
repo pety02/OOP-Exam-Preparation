@@ -22,9 +22,9 @@ settings е името на избрания етикет, или празен �
 class RadioButton final : public Control {
 private:
   const static int LABEL_MAX_COUNT = 16;
-  Label labels[RadioButton::LABEL_MAX_COUNT];
-  int currLabelIndex;
-  Label selected;
+  Label* labels[RadioButton::LABEL_MAX_COUNT];
+  int size;
+  int selected;
 
 public:
   RadioButton();
@@ -39,6 +39,8 @@ public:
   void store(const char* const) const override;
   void load(const char* const) override;
   const char* const settings() const override;
+
+  // TODO: add getters and setters
 
   bool operator()(int) const;
   void addLabel(const Label&);

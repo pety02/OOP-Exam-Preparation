@@ -20,15 +20,18 @@ Button – Това е контрола, която извършва даден�
 
 */
 
+typedef bool (*Func)(char*, Panel*);
+
 class Button : public Control {
 private:
     Panel* parentPanel;  
-    std::function<void(const char*, Panel*)> action;  
+    std::function<void(const char*, Panel*)> action;
+
 
 public:
     Button();
     Button(const char* const name, const char* const helpMessage, bool enabled,
-           std::function<void(const char*, Panel*)> action = nullptr);
+           Func action = nullptr);
     Button(const Button&);
     Button(Button&&) noexcept;
     Button& operator=(const Button&);

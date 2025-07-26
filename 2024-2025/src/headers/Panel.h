@@ -19,22 +19,23 @@ Panel – Това е контрола, която групира множест
 
 class Panel final : public Control {
 private:
+  // TODO: change fields name to be more comprehensive
   int maxCapacity;
   int currControlsIndex;
-  Control* controls;
+  Control** controls;
 
   virtual void copy(const Control&) override;
   virtual void destroy() override;
 
 public:
     Panel();
-    Panel(const char* const, const char* const, bool, int, int, const Control*);
+    Panel(const char* const, const char* const, bool, int, int);
     Panel(const Panel&);
     Panel(Panel&&) noexcept;
     Panel& operator=(const Panel&);
     Panel& operator=(Panel&&) noexcept;
-    Panel& operator+(const Control&);
-    Panel& operator-(const Control&);
+    Panel& operator+(const Control*&);
+    Panel& operator-(const Control*&);
     Control& operator[](int);
     const Control& operator[](int) const;
     ~Panel() override;
@@ -44,11 +45,12 @@ public:
     void load(const char* const) override;
     const char* const settings() const override;
 
+    // TODO: Change getters and setters names
+
     int getMaxCapacity() const;
     int getCurrControlsIndex() const;
     const Control* getControls() const;
 
-    void setMaxCapacity(int);
     void setCurrControlsIndex(int);
     void setControls(const Control*);
 };

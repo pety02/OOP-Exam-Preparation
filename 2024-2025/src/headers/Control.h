@@ -39,7 +39,7 @@ public:
   Control(const char* const, const char* const, bool);
   Control(const Control&);
   Control(Control&&) noexcept;
-  virtual ~Control() = 0;
+  virtual ~Control();
 
   virtual void print() const = 0;
   virtual void store(const char* const) const = 0;
@@ -54,6 +54,7 @@ public:
   virtual void setName(const char* const);
   virtual void setHelpMessage(const char* const);
   virtual void setEnabled(bool);
+  Control* clone() const;
 };
 
 unsigned Control::ID_SEQ = 0;

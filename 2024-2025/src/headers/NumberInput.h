@@ -36,7 +36,7 @@ public:
   NumberInput operator-(int);
   NumberInput& operator--(int);
   operator int() const;
-  ~NumberInput() override;
+  virtual ~NumberInput();
 
   void print() const override;
   void store(const char* const) const override;
